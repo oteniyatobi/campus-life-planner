@@ -95,3 +95,262 @@ body {
 .page.active {
   display: block;
 }
+
+.hero {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,59,113,0.5) 0%, rgba(0,59,113,0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+}
+
+.hero-greeting {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/*STAT CARDS*/
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+}
+
+.stat-card {
+  background: #fff;
+  border: 0.5px solid #e0ddd6;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.03em;
+}
+
+.stat-value.blue {
+  color: #185FA5;
+}
+
+.stat-value.red {
+  color: #C8102E;
+}
+/* CHART */
+.chart-container {
+  padding: 0 2rem 1.5rem;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 100px;
+  background: #fff;
+  border: 0.5px solid #e0ddd6;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/*CAP BAR*/
+.cap-container {
+  padding: 0 2rem 1.5rem;
+}
+
+.cap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cap-numbers {
+  font-size: 13px;
+  font-weight: 500;
+  color: #185FA5;
+}
+
+.cap-track {
+  height: 8px;
+  background: #e0ddd6;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.cap-fill {
+  height: 100%;
+  width: 0%;
+  background: #185FA5;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.cap-message {
+  font-size: 12px;
+  color: #888;
+}
+
+/*RECENT TASKS TABLE*/
+.recent-container {
+  padding: 0 2rem 2rem;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 0.5px solid #e0ddd6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.task-table th {
+  background: #F4F2ED;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.task-table td {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1a1a1a;
+  border-top: 0.5px solid #e0ddd6;
+}
+
+.task-table tr:hover td {
+  background: #F4F2ED;
+}
+
+/*PAGE HEADER*/
+.page-header {
+  padding: 1.5rem 2rem 0;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+/*TASKS CONTROLS*/
+.tasks-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+}
+
+.search-input {
+  width: 100%;
+  height: 38px;
+  border: 0.5px solid #e0ddd6;
+  border-radius: 8px;
+  padding: 0 10px 0 36px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #003B71;
+}
+
+/*SORT PILLS*/
+.sort-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sort-pill {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 0.5px solid #e0ddd6;
+  background: #fff;
+  color: #888;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+
+.sort-pill:hover {
+  border-color: #003B71;
+  color: #003B71;
+}
+
+.sort-pill.active {
+  background: #003B71;
+  color: #fff;
+  border-color: #003B71;
+}
+
+/*TABLE CONTAINER*/
+.table-container {
+  padding: 0 2rem 2rem;
+}
