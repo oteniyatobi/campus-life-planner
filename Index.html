@@ -7,144 +7,308 @@
     <title>Campus Life Planner</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="Styles/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<a href="#main-content" class="skip-link">Skip to content</a>
-
-<header>
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-logo">
-            <img src="Images/logo.png" alt="ALU logo" class="logo">
-            <span class="nav-title">Campus Life Planner</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
-            <li><a href="#" class="nav-link" data-page="tasks">Tasks</a></li>
-            <li><a href="#" class="nav-link" data-page="add-task">Add Task</a></li>
-            <li><a href="#" class="nav-link" data-page="reminders">Reminders</a></li>
-            <li><a href="#" class="nav-link" data-page="analysis">Analysis</a></li>
-        </ul>
-    </nav>
-</header>
 
 <body>
-    <section id="dashboard" class="page active" aria-label="Dashboard">
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-        <div class="hero">
-            <img src="Images/ALU campus image.jpg" alt="ALU campus" class="hero-img">
-            <div class="hero-overlay">
-                <h1 class="hero-greeting">Good morning, There </h1>
-                <p class="hero-sub">You have 3 overdue tasks and 2 due today. Time to get it done.</p>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-logo">
+                <img src="Images/logo.png" alt="ALU logo" class="logo">
+                <span class="nav-title">Campus Life Planner</span>
             </div>
-        </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-page="tasks">Tasks</a></li>
+                <li><a href="#" class="nav-link" data-page="add-task">Add Task</a></li>
+                <li><a href="#" class="nav-link" data-page="reminders">Reminders</a></li>
+                <li><a href="#" class="nav-link" data-page="analysis">Analysis</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main id="main-content">
 
-        <div class="stats-container">
-            <div class="stat-card">
-                <p class="stat-label">Total Tasks</p>
-                <p class="stat-value blue" id="stat-total">0</p>
+        <section id="dashboard" class="page active" aria-label="Dashboard">
+
+            <div class="hero">
+                <img src="Images/ALU campus image.jpg" alt="ALU campus" class="hero-img">
+                <div class="hero-overlay">
+                    <h1 class="hero-greeting">Good morning, There</h1>
+                    <p class="hero-sub">You have 3 overdue tasks and 2 due today. Time to get it done.</p>
+                </div>
             </div>
-            <div class="stat-card">
-                <p class="stat-label">Overdue</p>
-                <p class="stat-value red" id="stat-overdue">0</p>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <p class="stat-label">Total Tasks</p>
+                    <p class="stat-value blue" id="stat-total">0</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Overdue</p>
+                    <p class="stat-value red" id="stat-overdue">0</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Due Today</p>
+                    <p class="stat-value" id="stat-today">0</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Top Tag</p>
+                    <p class="stat-value" id="stat-top-tag">—</p>
+                </div>
             </div>
-            <div class="stat-card">
-                <p class="stat-label">Due Today</p>
-                <p class="stat-value" id="stat-today">0</p>
+
+            <div class="chart-container">
+                <h2 class="section-title">Tasks added, last 7 days</h2>
+                <div class="chart-bars" id="chart-bars">
+                </div>
             </div>
-            <div class="stat-card">
-                <p class="stat-label">Top Tag</p>
-                <p class="stat-value" id="stat-top-tag">—</p>
+
+            <div class="cap-container">
+                <div class="cap-header">
+                    <h2 class="section-title">Weekly duration cap</h2>
+                    <span class="cap-numbers" id="cap-numbers">0 / 600 mins</span>
+                </div>
+                <div class="cap-track">
+                    <div class="cap-fill" id="cap-fill"></div>
+                </div>
+                <p class="cap-message" id="cap-message" role="status" aria-live="polite">0 mins remaining</p>
             </div>
-        </div>
-  
-  <div class="chart-container">
-    <h2 class="section-title">Tasks added, last 7 days</h2>
-    <div class="chart-bars" id="chart-bars">
-      <!-- JavaScript will generate bars here -->
-    </div>
-  </div>
 
- 
-  <div class="cap-container">
-    <div class="cap-header">
-      <h2 class="section-title">Weekly duration cap</h2>
-      <span class="cap-numbers" id="cap-numbers">0 / 600 mins</span>
-    </div>
-    <div class="cap-track">
-      <div class="cap-fill" id="cap-fill"></div>
-    </div>
-    <p class="cap-message" id="cap-message" role="status" aria-live="polite">0 mins remaining</p>
-  </div>
+            <div class="recent-container">
+                <h2 class="section-title">Recent Tasks</h2>
+                <table class="task-table" role="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Tag</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-tasks-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-  <div class="recent-container">
-    <h2 class="section-title">Recent Tasks</h2>
-    <table class="task-table" role="table">
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Duration</th>
-          <th scope="col">Priority</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="recent-tasks-body">
-        <!-- JavaScript will populate this -->
-      </tbody>
-    </table>
-  </div>
-    </section>
+        <section id="tasks" class="page" aria-label="All Tasks">
 
-    <section id="tasks" class="page" aria-label="All Tasks">
+            <div class="page-header">
+                <h2 class="page-title">All Tasks</h2>
+            </div>
 
-  <!-- Page Header -->
-  <div class="page-header">
-    <h2 class="page-title">All Tasks</h2>
-  </div>
+            <div class="tasks-controls">
+                <div class="search-wrap">
+                    <span class="material-icons search-icon">search</span>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search tasks..."
+                        aria-label="Search tasks">
+                </div>
+                <div class="sort-pills">
+                    <button class="sort-pill active" data-sort="title">Title A-Z</button>
+                    <button class="sort-pill" data-sort="dueDate">Due Date</button>
+                    <button class="sort-pill" data-sort="duration">Duration</button>
+                    <button class="sort-pill" data-sort="priority">Priority</button>
+                    <button class="sort-pill" data-sort="tag">Tag</button>
+                </div>
+            </div>
 
-  <!-- Search and Sort -->
-  <div class="tasks-controls">
-    <div class="search-wrap">
-      <span class="material-icons search-icon">search</span>
-      <input 
-        type="text" 
-        id="search-input" 
-        class="search-input" 
-        placeholder="Search tasks..."
-        aria-label="Search tasks"
-      >
-    </div>
-    <div class="sort-pills">
-      <button class="sort-pill active" data-sort="title">Title A-Z</button>
-      <button class="sort-pill" data-sort="dueDate">Due Date</button>
-      <button class="sort-pill" data-sort="duration">Duration</button>
-      <button class="sort-pill" data-sort="priority">Priority</button>
-      <button class="sort-pill" data-sort="tag">Tag</button>
-    </div>
-  </div>
+            <div class="table-container">
+                <table class="task-table" role="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Tag</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-  <!-- Tasks Table -->
-  <div class="table-container">
-    <table class="task-table" role="table">
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Duration</th>
-          <th scope="col">Priority</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="tasks-body">
-        <!-- JavaScript will populate this -->
-      </tbody>
-    </table>
-  </div>
+        <section id="add-task" class="page" aria-label="Add Task">
 
-</section>
+            <div class="page-header">
+                <h2 class="page-title">Add New Task</h2>
+            </div>
 
+            <div class="form-container">
+                <form id="task-form" novalidate>
+
+                    <div class="field-wrap">
+                        <label for="task-title">Task Title <span aria-hidden="true">*</span></label>
+                        <input type="text" id="task-title" name="title" placeholder="Enter task title"
+                            aria-required="true" aria-describedby="title-error">
+                        <span class="field-error" id="title-error" role="alert"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="task-date">Due Date <span aria-hidden="true">*</span></label>
+                        <input type="text" id="task-date" name="dueDate" placeholder="YYYY-MM-DD" aria-required="true"
+                            aria-describedby="date-error">
+                        <span class="field-error" id="date-error" role="alert"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="task-duration">Duration (minutes) <span aria-hidden="true">*</span></label>
+                        <input type="text" id="task-duration" name="duration" placeholder="e.g. 90" aria-required="true"
+                            aria-describedby="duration-error">
+                        <span class="field-error" id="duration-error" role="alert"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="task-priority">Priority <span aria-hidden="true">*</span></label>
+                        <select id="task-priority" name="priority" aria-required="true">
+                            <option value="">Select priority</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                        <span class="field-error" id="priority-error" role="alert"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="task-tag">Tag <span aria-hidden="true">*</span></label>
+                        <input type="text" id="task-tag" name="tag" placeholder="e.g. academics" aria-required="true"
+                            aria-describedby="tag-error">
+                        <span class="field-error" id="tag-error" role="alert"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="task-reminder">Reminder (optional)</label>
+                        <select id="task-reminder" name="reminder">
+                            <option value="">No reminder</option>
+                            <option value="1">1 day before</option>
+                            <option value="2">2 days before</option>
+                            <option value="7">1 week before</option>
+                        </select>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-primary">
+                            <span class="material-icons">check</span>
+                            Save Task
+                        </button>
+                        <button type="button" class="btn-ghost" id="cancel-btn">
+                            Cancel
+                        </button>
+                    </div>
+
+                    <p id="form-status" role="status" aria-live="polite"></p>
+
+                </form>
+            </div>
+
+        </section>
+
+        <section id="reminders" class="page" aria-label="Reminders">
+
+            <div class="page-banner">
+                <img src="Images/ALU campus2.jpg" alt="ALU campus" class="banner-img">
+                <div class="banner-overlay">
+                    <span class="material-icons banner-icon">notifications</span>
+                    <div>
+                        <h2 class="banner-title">Reminders</h2>
+                        <p class="banner-sub">Stay on top of what is coming up</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h2 class="page-title">Upcoming and Overdue</h2>
+            </div>
+
+            <div class="reminders-container">
+                <div id="reminders-list"></div>
+                <div class="empty-state" id="reminders-empty" style="display:none;">
+                    <span class="material-icons empty-icon">notifications_none</span>
+                    <p>No reminders yet. Add a task to get started.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="analysis" class="page" aria-label="Analysis">
+
+            <div class="page-banner">
+                <img src="Images/ALU campus2.jpg" alt="ALU campus" class="banner-img">
+                <div class="banner-overlay">
+                    <span class="material-icons banner-icon">bar_chart</span>
+                    <div>
+                        <h2 class="banner-title">Analysis</h2>
+                        <p class="banner-sub">Patterns from your past tasks</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h2 class="page-title">Your Task History</h2>
+            </div>
+
+            <div class="analysis-container">
+
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h3 class="card-title">Tasks by Tag</h3>
+                        <div id="tag-chart"></div>
+                    </div>
+                    <div class="analysis-card">
+                        <h3 class="card-title">Tasks by Priority</h3>
+                        <div id="priority-chart"></div>
+                    </div>
+                </div>
+
+                <div class="analysis-card full-width">
+                    <h3 class="card-title">Completion Trend, last 4 weeks</h3>
+                    <div class="chart-bars" id="trend-chart"></div>
+                </div>
+
+                <div class="analysis-card full-width">
+                    <h3 class="card-title">Overdue History</h3>
+                    <table class="task-table" role="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Due Date</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col">Tag</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overdue-body"></tbody>
+                    </table>
+                    <div class="empty-state" id="overdue-empty" style="display:none;">
+                        <span class="material-icons empty-icon">check_circle</span>
+                        <p>No overdue tasks. Great job!</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Campus Life Planner &copy; 2026 Oteniya Oluwatobi Jeremiah</p>
+        <p>
+            <a href="https://github.com/oteniyatobi">GitHub: https://github.com/oteniyatobi</a>
+        </p>
+    </footer>
+
+    <script type="module" src="Scripts/main.js"></script>
 </body>
 
 </html>
