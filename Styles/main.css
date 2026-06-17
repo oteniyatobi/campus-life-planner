@@ -643,3 +643,35 @@ footer a:hover {
 .priority-fill.high { background: #C8102E; }
 .priority-fill.medium { background: #BA7517; }
 .priority-fill.low { background: #185FA5; }
+
+/* ===== ABOUT ===== */
+.about-container {
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 700px;
+}
+
+.about-card {
+  background: #fff;
+  border: 0.5px solid #e0ddd6;
+  border-radius: 10px;
+  padding: 1.2rem;
+}
+
+.about-card p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+.about-card a {
+  color: #003B71;
+  text-decoration: none;
+}
+
+.about-card a:hover {
+  text-decoration: underline;
+}
