@@ -126,3 +126,24 @@ document.addEventListener('click', (e) => {
   }
 });
 loadSeedIfEmpty();
+
+// SEARCH
+let currentSort = 'title';
+
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'search-input') {
+    renderTasksPage(e.target.value, currentSort);
+  }
+});
+
+// SORT
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.sort-pill')) {
+    const pill = e.target.closest('.sort-pill');
+    document.querySelectorAll('.sort-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    currentSort = pill.dataset.sort;
+    const searchValue = document.getElementById('search-input').value;
+    renderTasksPage(searchValue, currentSort);
+  }
+});
