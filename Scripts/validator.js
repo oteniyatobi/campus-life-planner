@@ -1,15 +1,13 @@
 // Rule 1 — Title no leading/trailing spaces, no double spaces
 export function validateTitle(value) {
-  const noLeadTrail = /^\S(?:.*\S)?$/;
-  const noDoubleSpaces = /\s{2,}/;
-  const duplicateWord = /\b(\w+)\s+\1\b/i; // Rule 5 — advanced (back-reference)
+  const duplicateWord = /\b(\w+)\s+\1\b/i;
 
-  if (!value) return 'Title is required';
-  if (!noLeadTrail.test(value)) return 'Title cannot have leading or trailing spaces';
-  if (noDoubleSpaces.test(value)) return 'Title cannot have double spaces';
+  if (!value || value.trim() === '') return 'Title is required';
+  if (value !== value.trim()) return 'Title cannot have leading or trailing spaces';
   if (duplicateWord.test(value)) return 'Title contains a duplicate word';
   return null;
 }
+
 
 // Rule 2 — Date must be YYYY-MM-DD
 export function validateDate(value) {

@@ -1,4 +1,7 @@
+import { renderDashboard, renderTasksPage } from './ui.js';
+import { addTask, generateId, deleteTask, updateTask, getTasks } from './state.js';
 import { validateForm } from './validator.js';
+import { loadSeedIfEmpty } from './storage.js';
 
 // NAVIGATION
 const navLinks = document.querySelectorAll('.nav-link');
@@ -11,6 +14,8 @@ function showPage(pageId) {
   if (targetPage) targetPage.classList.add('active');
   const targetLink = document.querySelector(`[data-page="${pageId}"]`);
   if (targetLink) targetLink.classList.add('active');
+  if (pageId === 'tasks') renderTasksPage();
+  if (pageId === 'dashboard') renderDashboard();
 }
 
 navLinks.forEach(link => {
@@ -21,7 +26,9 @@ navLinks.forEach(link => {
   });
 });
 
-// FORM VALIDATION
+// FORM
+let editingId = null;
+
 function showError(fieldId, message) {
   const errorEl = document.getElementById(`${fieldId}-error`);
   if (errorEl) errorEl.textContent = message || '';
@@ -32,6 +39,7 @@ function clearErrors() {
     showError(field, '');
   });
 }
+
 document.addEventListener('submit', (e) => {
   const form = e.target;
   if (form.id !== 'task-form') return;
@@ -60,5 +68,61 @@ document.addEventListener('submit', (e) => {
     return;
   }
 
+  const newTask = {
+    id: generateId(),
+    title: data.title,
+    dueDate: data.dueDate,
+    duration: parseFloat(data.duration),
+    priority: data.priority,
+    tag: data.tag,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  if (editingId) {
+    updateTask(editingId, newTask);
+    editingId = null;
+  } else {
+    addTask(newTask);
+  }
+
+  renderDashboard();
+  form.reset();
   document.getElementById('form-status').textContent = 'Task saved successfully!';
+  showPage('dashboard');
 });
+
+clearErrors();
+renderDashboard();
+
+// DELETE TASK
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.btn-delete')) {
+    const id = e.target.closest('.btn-delete').dataset.id;
+    if (confirm('Are you sure you want to delete this task?')) {
+      deleteTask(id);
+      renderTasksPage();
+      renderDashboard();
+    }
+  }
+});
+
+// EDIT TASK
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.btn-edit')) {
+    const id = e.target.closest('.btn-edit').dataset.id;
+    const tasks = getTasks();
+    const task = tasks.find(t => t.id === id);
+    if (!task) return;
+
+    document.getElementById('task-title').value = task.title;
+    document.getElementById('task-date').value = task.dueDate;
+    document.getElementById('task-duration').value = task.duration;
+    document.getElementById('task-priority').value = task.priority;
+    document.getElementById('task-tag').value = task.tag;
+
+    editingId = id;
+    showPage('add-task');
+  }
+});
+loadSeedIfEmpty();
