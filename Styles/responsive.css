@@ -1,0 +1,168 @@
+/* ===== RESPONSIVE CSS ===== */
+
+/* ===== TABLET (768px) ===== */
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    position: static;
+    transform: none;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-wrap {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .form-container {
+    max-width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    height: 160px;
+  }
+
+  .hero-greeting {
+    font-size: 20px;
+  }
+}
+
+/* ===== MOBILE (360px) ===== */
+@media (max-width: 360px) {
+
+  .navbar {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .nav-title {
+    font-size: 14px;
+  }
+
+  .nav-link {
+    font-size: 11px;
+  }
+
+  .nav-link .material-icons {
+    display: none;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .hero {
+    height: 130px;
+  }
+
+  .hero-greeting {
+    font-size: 17px;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+  }
+
+  .task-table thead {
+    display: none;
+  }
+
+  .task-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 0.5px solid #e0ddd6;
+    border-radius: 10px;
+    padding: 0.75rem;
+  }
+
+  .task-table td {
+    display: block;
+    text-align: right;
+    padding: 5px 10px;
+    position: relative;
+  }
+
+  .task-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: 600;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  .chart-container,
+  .cap-container,
+  .recent-container,
+  .table-container,
+  .analysis-container,
+  .reminders-container,
+  .about-container,
+  .settings-container {
+    padding: 0 1rem 1.5rem;
+  }
+
+  .page-header {
+    padding: 1rem 1rem 0;
+  }
+
+  .sort-pills {
+    gap: 4px;
+  }
+
+  .sort-pill {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
+
+/* ===== DESKTOP (1024px+) ===== */
+@media (min-width: 1024px) {
+  .stats-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .form-container {
+    max-width: 600px;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

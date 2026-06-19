@@ -707,3 +707,48 @@ mark {
 .settings-card input[type="number"] {
   width: 150px;
 }
+/* ===== ANIMATIONS ===== */
+@media (prefers-reduced-motion: no-preference) {
+
+  .page.active {
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .btn-primary {
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  .cap-fill {
+    transition: width 0.6s ease;
+  }
+
+  .nav-link {
+    transition: color 0.2s ease;
+  }
+
+  .reminder-card {
+    transition: transform 0.2s ease;
+  }
+
+  .reminder-card:hover {
+    transform: translateX(4px);
+  }
+}
