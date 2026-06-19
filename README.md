@@ -4,7 +4,7 @@ Software Engineering Student — African Leadership University, Kigali, Rwanda
 GitHub: [github.com/oteniyatobi](https://github.com/oteniyatobi)
 Email: oluwatobijeremiahoteniya@gmail.com
  
-**Live Demo:** [your-github-pages-url-here]
+**Live Demo:** [(https://oteniyatobi.github.io/campus-life-planner/)]
 **Theme:** Campus Life Planner
  
 ---
