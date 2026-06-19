@@ -106,3 +106,33 @@ export function renderTasksPage(searchPattern = '', sortBy = 'title') {
     tbody.appendChild(tr);
   });
 }
+
+// Render cap bar
+export function renderCapBar(cap = 600) {
+  const tasks = getTasks();
+  const today = new Date();
+  const weekStart = new Date(today);
+  weekStart.setDate(today.getDate() - today.getDay());
+
+  const weeklyTotal = tasks
+    .filter(t => new Date(t.createdAt) >= weekStart)
+    .reduce((sum, t) => sum + t.duration, 0);
+
+  const percent = Math.min((weeklyTotal / cap) * 100, 100);
+  const remaining = cap - weeklyTotal;
+
+  document.getElementById('cap-fill').style.width = `${percent}%`;
+  document.getElementById('cap-numbers').textContent = `${weeklyTotal} / ${cap} mins`;
+
+  const message = document.getElementById('cap-message');
+
+  if (weeklyTotal > cap) {
+    document.getElementById('cap-fill').style.background = '#C8102E';
+    message.textContent = `Cap exceeded by ${weeklyTotal - cap} mins`;
+    message.setAttribute('aria-live', 'assertive');
+  } else {
+    document.getElementById('cap-fill').style.background = '#185FA5';
+    message.textContent = `${remaining} mins remaining`;
+    message.setAttribute('aria-live', 'polite');
+  }
+}

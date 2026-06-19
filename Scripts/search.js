@@ -1,4 +1,4 @@
-// ===== SEARCH =====
+//SEARCH
 
 // Safe regex compiler
 export function compileRegex(input, flags = 'i') {

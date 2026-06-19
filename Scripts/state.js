@@ -1,4 +1,4 @@
-// ===== STATE =====
+// STATE
 import { loadTasks, saveTasks } from './storage.js';
 
 let tasks = loadTasks();

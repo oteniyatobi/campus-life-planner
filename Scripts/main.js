@@ -1,7 +1,7 @@
-import { renderDashboard, renderTasksPage } from './ui.js';
 import { addTask, generateId, deleteTask, updateTask, getTasks } from './state.js';
 import { validateForm } from './validator.js';
 import { loadSeedIfEmpty } from './storage.js';
+import { renderDashboard, renderTasksPage, renderCapBar } from './ui.js';
 
 // NAVIGATION
 const navLinks = document.querySelectorAll('.nav-link');
@@ -92,8 +92,6 @@ document.addEventListener('submit', (e) => {
   showPage('dashboard');
 });
 
-clearErrors();
-renderDashboard();
 
 // DELETE TASK
 document.addEventListener('click', (e) => {
@@ -147,3 +145,7 @@ document.addEventListener('click', (e) => {
     renderTasksPage(searchValue, currentSort);
   }
 });
+
+clearErrors();
+renderDashboard();
+renderCapBar();
