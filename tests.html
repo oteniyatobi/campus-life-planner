@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Tests — Campus Life Planner</title>
+  <style>
+    body { font-family: Inter, sans-serif; padding: 2rem; background: #F4F2ED; }
+    h1 { color: #003B71; margin-bottom: 1.5rem; }
+    h2 { color: #444; font-size: 15px; margin: 1.5rem 0 0.5rem; }
+    .test { padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; font-size: 13px; }
+    .pass { background: #d4edda; color: #155724; }
+    .fail { background: #f8d7da; color: #721c24; }
+    .summary { margin-top: 2rem; font-weight: 600; font-size: 15px; }
+  </style>
+</head>
+
+<body>
+
+  <h1>Regex Tests — Campus Life Planner</h1>
+  <div id="results"></div>
+  <div class="summary" id="summary"></div>
+
+  <script type="module">
+    import { validateTitle, validateDate, validateDuration, validateTag, validatePriority } from './Scripts/validator.js';
+
+    const results = [];
+
+    function test(description, actual, expected) {
+      const pass = actual === expected;
+      results.push({ description, actual, expected, pass });
+    }
+
+    // Rule 1 — Title
+    test('Title: valid title passes', validateTitle('Maths assignment'), null);
+    test('Title: leading space fails', validateTitle(' Maths assignment'), 'Title cannot have leading or trailing spaces');
+    test('Title: trailing space fails', validateTitle('Maths assignment '), 'Title cannot have leading or trailing spaces');
+    test('Title: empty fails', validateTitle(''), 'Title is required');
+    test('Title: duplicate word fails', validateTitle('submit submit essay'), 'Title contains a duplicate word');
+    test('Title: single word passes', validateTitle('Laundry'), null);
+
+    // Rule 2 — Date
+    test('Date: valid date passes', validateDate('2025-10-04'), null);
+    test('Date: empty fails', validateDate(''), 'Due date is required');
+    test('Date: wrong format fails', validateDate('10/04/2025'), 'Date must be in YYYY-MM-DD format');
+    test('Date: invalid month fails', validateDate('2025-13-01'), 'Date must be in YYYY-MM-DD format');
+    test('Date: invalid day fails', validateDate('2025-10-32'), 'Date must be in YYYY-MM-DD format');
+
+    // Rule 3 — Duration
+    test('Duration: valid number passes', validateDuration('90'), null);
+    test('Duration: decimal passes', validateDuration('1.5'), null);
+    test('Duration: empty fails', validateDuration(''), 'Duration is required');
+    test('Duration: negative fails', validateDuration('-5'), 'Duration must be a positive number e.g. 90 or 1.5');
+    test('Duration: letters fail', validateDuration('abc'), 'Duration must be a positive number e.g. 90 or 1.5');
+
+    // Rule 4 — Tag
+    test('Tag: valid tag passes', validateTag('academics'), null);
+    test('Tag: hyphenated tag passes', validateTag('group-work'), null);
+    test('Tag: empty fails', validateTag(''), 'Tag is required');
+    test('Tag: numbers fail', validateTag('tag123'), 'Tag can only contain letters, spaces, or hyphens');
+    test('Tag: special chars fail', validateTag('tag@work'), 'Tag can only contain letters, spaces, or hyphens');
+
+    // Rule 5 — Priority
+    test('Priority: High passes', validatePriority('High'), null);
+    test('Priority: empty fails', validatePriority(''), 'Please select a priority');
+
+    // Render results
+    const container = document.getElementById('results');
+    let passed = 0;
+    let failed = 0;
+
+    const groups = {
+      'Rule 1 — Title': results.slice(0, 6),
+      'Rule 2 — Date': results.slice(6, 11),
+      'Rule 3 — Duration': results.slice(11, 16),
+      'Rule 4 — Tag': results.slice(16, 21),
+      'Rule 5 — Priority': results.slice(21),
+    };
+
+    Object.entries(groups).forEach(([group, tests]) => {
+      const h2 = document.createElement('h2');
+      h2.textContent = group;
+      container.appendChild(h2);
+
+      tests.forEach(({ description, actual, expected, pass }) => {
+        const div = document.createElement('div');
+        div.className = `test ${pass ? 'pass' : 'fail'}`;
+        div.textContent = `${pass ? '✅' : '❌'} ${description}`;
+        container.appendChild(div);
+        pass ? passed++ : failed++;
+      });
+    });
+
+    document.getElementById('summary').textContent = `${passed} passed · ${failed} failed out of ${results.length} tests`;
+  </script>
+
+</body>
+
+</html>

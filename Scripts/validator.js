@@ -33,7 +33,6 @@ export function validateTag(value) {
   return null;
 }
 
-// Rule 5 is inside validateTitle (back-reference duplicate word check)
 
 // Priority validation
 export function validatePriority(value) {

@@ -354,7 +354,7 @@ body {
 .table-container {
   padding: 0 2rem 2rem;
 }
-/* ===== FORM ===== */
+/*FORM*/
 .form-container {
   padding: 1.5rem 2rem;
   max-width: 600px;
@@ -398,7 +398,7 @@ body {
   min-height: 16px;
 }
 
-/* ===== BUTTONS ===== */
+/*BUTTONS*/
 .form-buttons {
   display: flex;
   gap: 10px;
@@ -446,7 +446,7 @@ body {
   color: #003B71;
 }
 
-/* ===== FOOTER ===== */
+/*FOOTER */
 footer {
   background: #003B71;
   color: rgba(255, 255, 255, 0.7);
@@ -465,7 +465,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ===== PAGE BANNER ===== */
+/*PAGE BANNER*/
 .page-banner {
   position: relative;
   height: 120px;
@@ -505,7 +505,7 @@ footer a:hover {
   color: rgba(255,255,255,0.75);
 }
 
-/* ===== REMINDERS ===== */
+/*REMINDERS*/
 .reminders-container {
   padding: 0 2rem 2rem;
 }
@@ -570,7 +570,7 @@ footer a:hover {
   flex-shrink: 0;
 }
 
-/* ===== EMPTY STATE ===== */
+/*EMPTY STATE*/
 .empty-state {
   text-align: center;
   padding: 3rem;
@@ -583,7 +583,7 @@ footer a:hover {
   display: block;
   margin-bottom: 0.5rem;
 }
-/* ===== ANALYSIS ===== */
+/*ANALYSIS*/
 .analysis-container {
   padding: 0 2rem 2rem;
 }
@@ -644,7 +644,7 @@ footer a:hover {
 .priority-fill.medium { background: #BA7517; }
 .priority-fill.low { background: #185FA5; }
 
-/* ===== ABOUT ===== */
+/*ABOUT*/
 .about-container {
   padding: 1.5rem 2rem 2rem;
   display: flex;
@@ -675,14 +675,14 @@ footer a:hover {
 .about-card a:hover {
   text-decoration: underline;
 }
-/* ===== HIGHLIGHT ===== */
+/*HIGHLIGHT*/
 mark {
   background: #FFF3CD;
   color: #1a1a1a;
   padding: 1px 2px;
   border-radius: 2px;
 }
-/* ===== SETTINGS ===== */
+/*SETTINGS*/
 .settings-container {
   padding: 1.5rem 2rem 2rem;
   display: flex;
@@ -707,7 +707,7 @@ mark {
 .settings-card input[type="number"] {
   width: 150px;
 }
-/* ===== ANIMATIONS ===== */
+/*ANIMATIONS*/
 @media (prefers-reduced-motion: no-preference) {
 
   .page.active {

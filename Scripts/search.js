@@ -1,6 +1,6 @@
 //SEARCH
 
-// Safe regex compiler
+// regex compiler
 export function compileRegex(input, flags = 'i') {
   try {
     return input ? new RegExp(input, flags) : null;

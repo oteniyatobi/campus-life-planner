@@ -1,8 +1,8 @@
 import { addTask, generateId, deleteTask, updateTask, getTasks } from './state.js';
 import { validateForm } from './validator.js';
 import { loadSeedIfEmpty } from './storage.js';
-import { renderDashboard, renderTasksPage, renderCapBar } from './ui.js';
 import { exportTasks, importTasks } from './storage.js';
+import { renderDashboard, renderTasksPage, renderCapBar, renderChart, renderReminders, renderAnalysis } from './ui.js';
 
 // NAVIGATION
 const navLinks = document.querySelectorAll('.nav-link');
@@ -17,6 +17,8 @@ function showPage(pageId) {
   if (targetLink) targetLink.classList.add('active');
   if (pageId === 'tasks') renderTasksPage();
   if (pageId === 'dashboard') renderDashboard();
+  if (pageId === 'reminders') renderReminders();
+  if (pageId === 'analysis') renderAnalysis();
 }
 
 navLinks.forEach(link => {
@@ -193,3 +195,4 @@ document.addEventListener('change', (e) => {
 clearErrors();
 renderDashboard();
 renderCapBar(parseInt(localStorage.getItem('campusPlanner:cap') || '600'));
+renderChart();

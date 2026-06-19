@@ -1,6 +1,4 @@
-/* ===== RESPONSIVE CSS ===== */
-
-/* ===== TABLET (768px) ===== */
+/*TABLET (768px)*/
 @media (max-width: 768px) {
 
   .navbar {
@@ -58,7 +56,7 @@
   }
 }
 
-/* ===== MOBILE (360px) ===== */
+/*MOBILE (360px)*/
 @media (max-width: 360px) {
 
   .navbar {
@@ -152,7 +150,7 @@
   }
 }
 
-/* ===== DESKTOP (1024px+) ===== */
+/*DESKTOP (1024px+)*/
 @media (min-width: 1024px) {
   .stats-container {
     grid-template-columns: repeat(4, 1fr);
