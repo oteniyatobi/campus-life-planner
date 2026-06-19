@@ -115,7 +115,34 @@
   .page-header {
     padding: 1rem 0.75rem 0;
   }
+.analysis-container .task-table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+/* Hide tag column on mobile in analysis */
+#overdue-body td:last-child,
+.analysis-card .task-table th:last-child,
+.analysis-card .task-table td:last-child {
+  display: none;
+}
 
+.analysis-card {
+  overflow-x: hidden;
+  padding: 0.75rem;
+}
+
+.analysis-card .task-table {
+  min-width: unset;
+  width: 100%;
+  white-space: normal;
+}
+
+.analysis-card .task-table td,
+.analysis-card .task-table th {
+  font-size: 10px;
+  padding: 6px 4px;
+}
   /* TABLE BECOMES CARDS ON MOBILE */
   .task-table {
     border: none;
