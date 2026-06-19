@@ -752,3 +752,6 @@ mark {
     transform: translateX(4px);
   }
 }
+.hamburger {
+  display: none;
+}
