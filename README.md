@@ -188,7 +188,7 @@ All HTML, CSS, and JavaScript code in this project was written by me. AI tools w
 ---
 
 **Live Demo:** [https://github.com/oteniyatobi/campus-life-planner]
-**Demo Video:** [https://youtu.be/p9zRzOHrGkI](https://youtu.be/p9zRzOHrGkI)
+**Demo Video:** [(https://youtu.be/AbHk3urjP30)](https://youtu.be/AbHk3urjP30)]
  
 ## Milestones
  
