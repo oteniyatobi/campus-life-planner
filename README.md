@@ -186,6 +186,9 @@ All HTML, CSS, and JavaScript code in this project was written by me. AI tools w
 - Documentation and README writing assistance
 - And also the think design process
 ---
+
+**Live Demo:** [https://github.com/oteniyatobi/campus-life-planner]
+**Demo Video:** [https://youtu.be/p9zRzOHrGkI](https://youtu.be/p9zRzOHrGkI)
  
 ## Milestones
  
