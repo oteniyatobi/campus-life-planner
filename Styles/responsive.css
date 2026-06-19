@@ -70,7 +70,7 @@
   }
 }
 
-/* ===== MOBILE (480px and below) ===== */
+/*MOBILE (480px and below) */
 @media (max-width: 480px) {
 
   .navbar {
@@ -143,6 +143,68 @@
   font-size: 10px;
   padding: 6px 4px;
 }
+.hamburger {
+  display: flex;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-links {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background: #003B71;
+  padding: 0.5rem 0;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-link {
+  padding: 10px 1rem;
+  font-size: 14px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+}
+
+
+.navbar {
+  position: relative;
+}
+
+.hamburger {
+  display: flex;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+
+.nav-links {
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  background: #003B71;
+  padding: 0.5rem 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border-radius: 0 0 8px 8px;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-link {
   /* TABLE BECOMES CARDS ON MOBILE */
   .task-table {
     border: none;
@@ -225,4 +287,5 @@
 
 .task-table tbody tr.today-row {
   border-left: 3px solid #185FA5;
+}
 }

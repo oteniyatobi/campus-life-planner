@@ -26,9 +26,9 @@ navLinks.forEach(link => {
     e.preventDefault();
     const pageId = link.getAttribute('data-page');
     showPage(pageId);
+    if (navLinksList) navLinksList.classList.remove('open');
   });
 });
-
 // FORM
 let editingId = null;
 
@@ -191,6 +191,16 @@ document.addEventListener('change', (e) => {
       });
   }
 });
+
+// HAMBURGER MENU
+const hamburger = document.getElementById('hamburger-btn');
+const navLinksList = document.querySelector('.nav-links');
+
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    navLinksList.classList.toggle('open');
+  });
+}
 
 clearErrors();
 renderDashboard();
