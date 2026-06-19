@@ -2,6 +2,7 @@ import { addTask, generateId, deleteTask, updateTask, getTasks } from './state.j
 import { validateForm } from './validator.js';
 import { loadSeedIfEmpty } from './storage.js';
 import { renderDashboard, renderTasksPage, renderCapBar } from './ui.js';
+import { exportTasks, importTasks } from './storage.js';
 
 // NAVIGATION
 const navLinks = document.querySelectorAll('.nav-link');
@@ -146,6 +147,49 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// SETTINGS
+let currentCap = parseInt(localStorage.getItem('campusPlanner:cap') || '600');
+
+document.addEventListener('click', (e) => {
+  // Export
+  if (e.target.closest('#export-btn')) {
+    exportTasks();
+  }
+
+  // Import
+  if (e.target.closest('#import-btn')) {
+    document.getElementById('import-input').click();
+  }
+
+  // Save cap
+  if (e.target.closest('#save-cap-btn')) {
+    const capValue = parseInt(document.getElementById('cap-input').value);
+    if (capValue > 0) {
+      localStorage.setItem('campusPlanner:cap', capValue);
+      currentCap = capValue;
+      renderCapBar(currentCap);
+      document.getElementById('form-status') && (document.getElementById('form-status').textContent = '');
+      alert('Cap saved successfully!');
+    }
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.id === 'import-input') {
+    const file = e.target.files[0];
+    if (!file) return;
+    importTasks(file)
+      .then(() => {
+        document.getElementById('import-status').textContent = 'Tasks imported successfully!';
+        renderDashboard();
+        renderCapBar(currentCap);
+      })
+      .catch(err => {
+        document.getElementById('import-status').textContent = `Import failed: ${err}`;
+      });
+  }
+});
+
 clearErrors();
 renderDashboard();
-renderCapBar();
+renderCapBar(parseInt(localStorage.getItem('campusPlanner:cap') || '600'));

@@ -682,3 +682,28 @@ mark {
   padding: 1px 2px;
   border-radius: 2px;
 }
+/* ===== SETTINGS ===== */
+.settings-container {
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+}
+
+.settings-card {
+  background: #fff;
+  border: 0.5px solid #e0ddd6;
+  border-radius: 10px;
+  padding: 1.2rem;
+}
+
+.settings-card p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.settings-card input[type="number"] {
+  width: 150px;
+}
