@@ -289,11 +289,12 @@ export function renderAnalysis() {
     overdueTasks.forEach(task => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${task.title}</td>
-        <td>${task.dueDate}</td>
-        <td>${task.duration} min</td>
-        <td>${task.priority}</td>
-        <td>${task.tag}</td>
+        <td data-label="Title">${task.title}</td>
+        <td data-label="Due Date">${task.dueDate}</td>
+        <td data-label="Duration">${task.duration} min</td>
+        <td data-label="Priority">${task.priority}</td>
+        <td data-label="Tag">${task.tag}</td>
+        <td data-label="Actions">—</td>
       `;
       overdueBody.appendChild(tr);
     });
